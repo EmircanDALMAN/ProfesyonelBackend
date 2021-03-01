@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Transactions;
+using AutoMapper;
 using Business.Abstract;
 using Business.ValidationRules.FluentValidation;
 using DataAccess.Abstract;
@@ -21,7 +22,7 @@ namespace Business.Concrete.Managers
     [PerformanceCounterAspect]
     public class ProductManager : IProductService
     {
-        private IProductDal _productDal;
+        private readonly IProductDal _productDal;
 
         public ProductManager(IProductDal productDal)
         {
@@ -37,7 +38,7 @@ namespace Business.Concrete.Managers
         [CacheAspect(typeof(MemoryCacheManager))]
         //[LogAspect(typeof(DatabaseLogger))]
         //[LogAspect(typeof(FileLogger))]
-        [SecuredOperation(Roles="admin,student")]
+        [SecuredOperation(Roles = "admin,student")]
         public IDataResult<List<Product>> GetList()
         {
             return new SuccessDataResult<List<Product>>(_productDal.GetList());
@@ -53,7 +54,6 @@ namespace Business.Concrete.Managers
         //[LogAspect(typeof(FileLogger))]
         public IDataResult<Product> Add(Product product)
         {
-
             return new SuccessDataResult<Product>(_productDal.Add(product));
         }
 
