@@ -6,5 +6,6 @@
   <li> Ninject</li>
   <li> Postsharp</li>
   <li> Fluent Validation</li>
+  <li> Authentication && Jwt</li>
   <li> Kurumsal Mimari</li>
 </ul>
