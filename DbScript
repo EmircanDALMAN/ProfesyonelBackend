@@ -1,0 +1,27 @@
+CREATE TABLE [dbo].[Roles] (
+    [Id]   INT          IDENTITY (1, 1) NOT NULL,
+    [Name] VARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+CREATE TABLE [dbo].[UserOperationClaims] (
+    [Id]               INT IDENTITY (1, 1) NOT NULL,
+    [UserId]           INT NULL,
+    [OperationClaimId] INT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+CREATE TABLE [dbo].[UserRoles] (
+    [Id]     INT IDENTITY (1, 1) NOT NULL,
+    [UserId] INT NOT NULL,
+    [RoleId] INT NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
+CREATE TABLE [dbo].[Users] (
+    [Id]           INT           IDENTITY (1, 1) NOT NULL,
+    [FirstName]    NVARCHAR (25) NOT NULL,
+    [LastName]     NVARCHAR (25) NOT NULL,
+    [Email]        NVARCHAR (50) NOT NULL,
+    [PasswordSalt] BINARY (128)  NOT NULL,
+    [PasswordHash] BINARY (128)  NOT NULL,
+    [Status]       BIT           NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC)
+);
